@@ -11,42 +11,46 @@
 	img {
 		max-width: 100%;
 	}
+	table{width:100%;}
+	td{border:1px solid black; margin:2px; padding:2px; font-size:10px;}
 	</style>
 	<title>Downloads</title>
+	<script src="useragent-examples.js"></script>
 	<script src="useragent.js"></script>
+	<script>
+		$(function() {
+
+			$('#debug-you').append('<tr><td>'+navigator.userAgent+'</td><td>'+ua2dl(navigator.userAgent)+'</td></tr>');
+
+			for(var i=0; i<test_useragents.length; i++){
+				$('#debug-more').append('<tr><td>'+test_useragents[i]+'</td><td>'+ua2dl(test_useragents[i])+'</td></tr>');
+			}
+
+		});
+	</script>
 </head>
 <body>
 <div class="container">
-	<img src="https://syncthing.net/images/logo-horizontal.svg" height="128" />
-	<h1>Downloads <span class="text-danger">BETA</span></h1>
-	{{range .}}
-		{{if .HasLatestVersion}}
-			<h2>{{.FriendlyName}} <a href="{{.GithubURL}}" target="_new"><small class="text-muted">{{.GithubName}}</small></a></h2>
-			<p>{{.Description}}</p>
-			{{with .LatestVersion}}
-				<h3>Version {{.FriendlyName}}</h3>
-				<ul>
-				{{range .SortedAssets}}
-					<li><a href="{{.URL}}">{{.FriendlyName}}</a></li>
-				{{end}}
-				</ul>
-			{{end}}
 
-			{{if .HasOlderVersions}}
-			<details>
-				<summary>Older versions</summary>
-				{{range .OlderVersions}}
-					<h4>Version {{.FriendlyName}}</h4>
-					<ul>
-					{{range .SortedAssets}}
-						<li><a href="{{.URL}}">{{.FriendlyName}}</a></li>
-					{{end}}
-					</ul>
-				{{end}}
-			</details>
-			{{end}}
-		{{end}}
-	{{end}}
+	<style></style>	
+	<h4>you (this browser)</h4>
+	<table id="debug-you">
+		<tr>
+			<th>useragent</th>
+			<th>suggestion</th>
+		</tr>
+	</table>
+	<br>
+
+	<h4>additional tests on random UAs</h4>
+	<table id="debug-more">
+		<tr>
+			<th>useragent</th>
+			<th>suggestion</th>
+		</tr>
+	</table>
+	
 </div>
-</body>
-</html>
+
+
+</body></html>
