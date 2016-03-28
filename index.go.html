@@ -18,10 +18,26 @@
 </head>
 <body>
 <div class="container">
+
+	<style>table{width:100%;}td{border:1px solid black; margin:2px; padding:2px; font-size:10px;}</style>	
 	<h4>you (this browser)</h4>
-	<div id="debug-you"></div><br>
+	<table id="debug-you">
+		<tr>
+			<th>useragent</th>
+			<th>suggestion</th>
+		</tr>
+	</table>
+	<br>
+
 	<h4><a href="#" id="expand-more">show additional tests</a></h4>
-	<div id="debug-more"></div><br>
+	<table id="debug-more">
+		<tr>
+			<th>useragent</th>
+			<th>suggestion</th>
+		</tr>
+	</table>
+	<br>
+	
 	<img src="https://syncthing.net/images/logo-horizontal.svg" height="128" />
 	<h1>Downloads <span class="text-danger">BETA</span></h1>
 	{{range .}}
