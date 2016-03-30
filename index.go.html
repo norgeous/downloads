@@ -127,7 +127,7 @@ $(function () {
 						</ul>
 					{{end}}
 
-					{{if .FriendlyName}}
+					{{if .IsSyncthing}}
 						<ul>
 							<li><a href="http://apt.syncthing.net/">Debian / Ubuntu packages</a></li>
 							<li><a href="https://play.google.com/store/apps/details?id=com.nutomic.syncthingandroid">Android: Google Play</a></li>
@@ -136,8 +136,8 @@ $(function () {
 					{{end}}
 
 					{{if .HasOlderVersions}}
-					<a href="#older-versions-{{.FriendlyName}}" class="toggle btn btn-primary">Show older versions</a>
-					<details id="older-versions-{{.FriendlyName}}" class="hidden">
+					<a href="#older-versions-{{.CssName}}" class="toggle btn btn-primary">Show older versions</a>
+					<details id="older-versions-{{.CssName}}" class="hidden">
 						<summary>Older versions</summary>
 						{{range .OlderVersions}}
 							<h4>Version {{.FriendlyName}}</h4>
