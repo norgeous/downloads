@@ -82,7 +82,7 @@ func getRepository(rc repoCfg) (repo, error) {
 		FriendlyName: rc.FriendlyName,
 		GithubName:   gr.FullName,
 		CssName:      strings.Replace(gr.FullName, "/", "-", -1),
-		IsSyncthing:  strings.Contains(gr.FullName, "syncthing/syncthing"),
+		IsSyncthing:  strings.Compare(gr.FullName, "syncthing/syncthing")==0,
 		Description:  gr.Description,
 		GithubURL:    gr.URL,
 	}
