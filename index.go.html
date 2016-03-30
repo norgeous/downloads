@@ -17,6 +17,7 @@
 	</style>
 	<title>Downloads</title>
 	<script src="useragent.js"></script>
+	<script src="script.jquery.js"></script>
 </head>
 <body>
 <div class="container">
@@ -24,30 +25,35 @@
 	<h1>Downloads <span class="text-danger">BETA</span></h1>
 	{{range .}}
 		{{if .HasLatestVersion}}
-			<h2>{{.FriendlyName}} <a href="{{.GithubURL}}" target="_new"><small class="text-muted">{{.GithubName}}</small></a></h2>
-			<p>{{.Description}}</p>
-			{{with .LatestVersion}}
-				<h3>Version {{.FriendlyName}}</h3>
-				<ul>
-				{{range .SortedAssets}}
-					<li><a href="{{.URL}}">{{.FriendlyName}}</a></li>
-				{{end}}
-				</ul>
-			{{end}}
-
-			{{if .HasOlderVersions}}
-			<details>
-				<summary>Older versions</summary>
-				{{range .OlderVersions}}
-					<h4>Version {{.FriendlyName}}</h4>
-					<ul>
-					{{range .SortedAssets}}
-						<li><a href="{{.URL}}">{{.FriendlyName}}</a></li>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h2>{{.FriendlyName}} <a href="{{.GithubURL}}" target="_new"><small class="text-muted">{{.GithubName}}</small></a></h2>
+					<p>{{.Description}}</p>
+					{{with .LatestVersion}}
+						<h3>Version {{.FriendlyName}}</h3>
+						<ul>
+						{{range .SortedAssets}}
+							<li><a href="{{.URL}}">{{.FriendlyName}}</a></li>
+						{{end}}
+						</ul>
 					{{end}}
-					</ul>
-				{{end}}
-			</details>
-			{{end}}
+
+					{{if .HasOlderVersions}}
+					<a href="#older-versions-{{.FriendlyName}}" class="toggle btn btn-primary">Show older versions</a>
+					<details id="older-versions-{{.FriendlyName}}" class="hidden">
+						<summary>Older versions</summary>
+						{{range .OlderVersions}}
+							<h4>Version {{.FriendlyName}}</h4>
+							<ul>
+							{{range .SortedAssets}}
+								<li><a href="{{.URL}}">{{.FriendlyName}}</a></li>
+							{{end}}
+							</ul>
+						{{end}}
+					</details>
+					{{end}}
+				</div>
+			</div>
 		{{end}}
 	{{end}}
 </div>
